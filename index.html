@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Professional Ethics — Revision Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF0F2;
+  --card:#FFFFFF;
+  --ink:#16222E;
+  --ink-soft:#4A5C6B;
+  --line:#CBD5DC;
+  --teal:#1F6C66;
+  --teal-soft:#DCEAE8;
+  --amber:#9C6B12;
+  --amber-soft:#F6EBD6;
+  --good:#1E6B4A;
+  --good-soft:#DCEDE3;
+  --bad:#9E3826;
+  --bad-soft:#F6E2DE;
+  --shadow:0 1px 0 var(--line);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#11181F;
+    --card:#18222C;
+    --ink:#E6ECF0;
+    --ink-soft:#9DAFBD;
+    --line:#2C3A47;
+    --teal:#6FC3B8;
+    --teal-soft:#14332F;
+    --amber:#E0B25E;
+    --amber-soft:#33280F;
+    --good:#7DCB9F;
+    --good-soft:#12301F;
+    --bad:#E8907C;
+    --bad-soft:#341811;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11181F;
+  --card:#18222C;
+  --ink:#E6ECF0;
+  --ink-soft:#9DAFBD;
+  --line:#2C3A47;
+  --teal:#6FC3B8;
+  --teal-soft:#14332F;
+  --amber:#E0B25E;
+  --amber-soft:#33280F;
+  --good:#7DCB9F;
+  --good-soft:#12301F;
+  --bad:#E8907C;
+  --bad-soft:#341811;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Archivo,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.5;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:740px;margin:0 auto;padding:18px 16px 72px}
+a{color:var(--teal)}
+button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:Spectral,Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+h1{font-size:1.9rem;letter-spacing:-.01em}
+h2{font-size:1.3rem}
+p{margin:.5em 0}
+.muted{color:var(--ink-soft)}
+.small{font-size:.85rem}
+
+/* masthead */
+.mast{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:22px}
+.mast .sub{font-size:.82rem;color:var(--ink-soft)}
+.ghost{background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.82rem}
+.ghost:hover{border-color:var(--teal);color:var(--teal)}
+
+/* home */
+.setlist{display:grid;gap:10px;margin:14px 0 26px}
+.set{display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);
+  border-radius:4px;padding:14px 16px}
+.set:hover{border-color:var(--teal)}
+.set[disabled]{opacity:.55;cursor:default;border-left-color:var(--line)}
+.set .n{font-family:Spectral,serif;font-size:1.5rem;color:var(--teal);min-width:2.4ch;text-align:right}
+.set .t{font-weight:600}
+.set .d{font-size:.83rem;color:var(--ink-soft)}
+.set .stat{margin-left:auto;font-size:.78rem;color:var(--ink-soft);text-align:right;white-space:nowrap}
+
+fieldset{border:none;padding:0;margin:0 0 18px}
+legend{font-size:.8rem;color:var(--ink-soft);padding:0;margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.85rem}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#0C1319}}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#0C1319}
+
+.rowbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:4px;
+  padding:11px 20px;font-weight:600}
+.btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.sec{background:none;color:var(--ink)}
+.btn.sec:hover{color:var(--teal);background:none}
+
+/* quiz */
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:6px;font-size:.8rem;color:var(--ink-soft)}
+.track{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.fill{height:100%;background:var(--teal);width:0;transition:width .25s ease}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 20px 16px;margin-top:12px}
+.qtag{font-size:.75rem;color:var(--ink-soft);margin-bottom:8px}
+.qtext{font-family:Spectral,Georgia,serif;font-size:1.22rem;line-height:1.42;margin-bottom:16px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;
+  background:var(--card);border:1px solid var(--line);border-radius:5px;padding:12px 14px;transition:border-color .12s}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt .k{font-weight:700;color:var(--ink-soft);min-width:1.4ch}
+.opt.sel{border-color:var(--teal);background:var(--teal-soft)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.right .k{color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{color:var(--bad)}
+.opt:disabled{cursor:default}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:5px;font-size:.92rem}
+.verdict.ok{background:var(--good-soft);color:var(--good)}
+.verdict.no{background:var(--bad-soft);color:var(--bad)}
+.verdict b{font-family:Spectral,serif}
+.nav{display:flex;align-items:center;gap:10px;margin-top:16px}
+.nav .spacer{flex:1}
+.flag{background:none;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.8rem}
+.flag[aria-pressed="true"]{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.keys{margin-top:14px;font-size:.76rem;color:var(--ink-soft)}
+
+/* results */
+.score{font-family:Spectral,serif;font-size:4rem;line-height:1;margin:6px 0}
+.scoreline{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.reviewq{border-top:1px solid var(--line);padding:14px 0}
+.reviewq .qt{font-family:Spectral,serif;font-size:1.02rem;margin-bottom:6px}
+.pill{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:999px;margin-right:6px}
+.pill.g{background:var(--good-soft);color:var(--good)}
+.pill.b{background:var(--bad-soft);color:var(--bad)}
+
+/* browse + add */
+.browseq{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:14px 16px;margin-bottom:8px}
+.browseq .qt{font-family:Spectral,serif;font-size:1.05rem}
+.browseq ol{margin:8px 0 0;padding-left:22px;font-size:.92rem}
+.browseq li.ans{color:var(--good);font-weight:600}
+input[type=search],textarea,input[type=text]{
+  width:100%;font-family:inherit;font-size:.95rem;color:var(--ink);background:var(--card);
+  border:1px solid var(--line);border-radius:5px;padding:10px 12px}
+textarea{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;min-height:190px;resize:vertical}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.note{background:var(--amber-soft);border-left:3px solid var(--amber);padding:12px 14px;border-radius:0 4px 4px 0;font-size:.88rem}
+.hidden{display:none !important}
+.overflow{overflow-x:auto}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+@media (max-width:520px){
+  h1{font-size:1.5rem}
+  .qtext{font-size:1.1rem}
+  .score{font-size:3rem}
+  .set .n{font-size:1.2rem}
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<div class="mast">
+  <div>
+    <h1>Professional Ethics</h1>
+    <div class="sub">Revision practice · Units 1–4 · 199 questions</div>
+  </div>
+  <button class="ghost" id="themeBtn">Dark</button>
+</div>
+
+<!-- ============ HOME ============ -->
+<section id="home">
+  <div class="setlist" id="setlist"></div>
+
+  <fieldset>
+    <legend>Mode</legend>
+    <div class="chips">
+      <button class="chip" data-opt="mode" data-val="practice" aria-pressed="true">Practice — answer shown each question</button>
+      <button class="chip" data-opt="mode" data-val="test" aria-pressed="false">Test — score at the end</button>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Options</legend>
+    <div class="chips">
+      <button class="chip" data-toggle="shuffleQ" aria-pressed="true">Shuffle questions</button>
+      <button class="chip" data-toggle="shuffleO" aria-pressed="true">Shuffle choices</button>
+    </div>
+    <p class="small muted" style="margin-top:8px">Shuffling choices matters here — in the original papers the answer is very often (a).</p>
+  </fieldset>
+
+  <div class="rowbtns">
+    <button class="btn sec" id="browseBtn">Browse all questions</button>
+    <button class="btn sec" id="addBtn">Add a question set</button>
+    <button class="btn sec" id="resetBtn">Clear my progress</button>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="hidden">
+  <div class="bar">
+    <span id="counter">1 / 50</span>
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <span id="runscore"></span>
+  </div>
+  <div class="qcard">
+    <div class="qtag" id="qtag"></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div id="verdict"></div>
+  </div>
+  <div class="nav">
+    <button class="flag" id="flagBtn" aria-pressed="false">☆ Flag</button>
+    <button class="ghost" id="prevBtn">← Back</button>
+    <span class="spacer"></span>
+    <button class="ghost" id="quitBtn">End</button>
+    <button class="btn" id="nextBtn">Next →</button>
+  </div>
+  <div class="keys">Keys: 1–4 or A–D to answer · Enter for next · F to flag</div>
+</section>
+
+<!-- ============ RESULT ============ -->
+<section id="result" class="hidden">
+  <div class="scoreline">
+    <div><div class="score" id="scoreVal">0%</div></div>
+    <div class="muted" id="scoreText" style="padding-bottom:10px"></div>
+  </div>
+  <div id="breakdown" class="small muted" style="margin:10px 0 18px"></div>
+  <div class="rowbtns" style="margin-bottom:20px">
+    <button class="btn" id="retryWrong">Retry the ones I missed</button>
+    <button class="btn sec" id="homeBtn">Back to sets</button>
+  </div>
+  <h2 id="reviewHead">Review</h2>
+  <div id="review"></div>
+</section>
+
+<!-- ============ BROWSE ============ -->
+<section id="browse" class="hidden">
+  <div class="rowbtns" style="margin-bottom:14px">
+    <button class="btn sec" id="browseBack">← Back</button>
+  </div>
+  <input type="search" id="search" placeholder="Search questions, e.g. whistle, Gilligan, POSH">
+  <p class="small muted" id="searchCount" style="margin:10px 0 14px"></p>
+  <div id="browseList"></div>
+</section>
+
+<!-- ============ ADD SET ============ -->
+<section id="add" class="hidden">
+  <div class="rowbtns" style="margin-bottom:14px">
+    <button class="btn sec" id="addBack">← Back</button>
+  </div>
+  <h2>Add a question set</h2>
+  <p class="muted small">Paste the questions in the same layout as your revision PDFs, give the set a name and an answer key, and it joins the practice sets. Sets you add are saved in this browser.</p>
+
+  <div class="note" style="margin:14px 0">Unit 4 (Official) — the professor's 99-question Global Issues bank — is already loaded as its own set. Upload or paste your own version here under a different name, e.g. <b>Unit 4 (Mine)</b>, and both will show up separately on the home screen so you can switch between them.</div>
+
+  <label class="small muted" for="setName">Set name</label>
+  <input type="text" id="setName" placeholder="Unit 4 (Mine)" style="margin:6px 0 14px">
+
+  <label class="small muted" for="pdfInput">Upload a question-bank PDF</label>
+  <input type="file" id="pdfInput" accept="application/pdf" style="display:block;margin:6px 0 4px">
+  <p class="small muted" id="pdfStatus" style="margin:0 0 14px">This reads the PDF straight in your browser — nothing is uploaded anywhere. Most papers don't print an answer key next to the questions, so you'll usually still fill in the key below (or try "Guess key from text" if yours does).</p>
+
+  <label class="small muted" for="qInput">Questions</label>
+  <textarea id="qInput" placeholder="1. Question text here.
+a. first choice
+b. second choice
+c. third choice
+d. fourth choice
+2. Next question ..."></textarea>
+
+  <div class="rowbtns" style="margin-top:8px;margin-bottom:0">
+    <label class="small muted" for="keyInput" style="align-self:center">Answer key</label>
+    <button class="btn sec" id="guessKeyBtn" style="padding:6px 14px">Guess key from text</button>
+  </div>
+  <input type="text" id="keyInput" placeholder="1c 2a 3d 4b ...  (or 1-c, 2-a, 3-d)" style="margin-top:6px">
+
+  <div class="rowbtns">
+    <button class="btn" id="parseBtn">Add this set</button>
+    <button class="btn sec" id="exportBtn">Export my added sets</button>
+  </div>
+  <p id="parseMsg" class="small" style="margin-top:12px"></p>
+  <div id="parsePreview"></div>
+</section>
+
+</div>
+
+<script>
+/* ============================================================
+   QUESTION BANK
+   u = set name, q = question, o = four choices, a = index of the
+   correct choice (0=a,1=b,2=c,3=d), e = one-line explanation.
+   To add Unit 4 permanently, append objects in the same shape.
+   ============================================================ */
+const BANK = [
+/* ---------- UNIT 1 & 2 ---------- */
+{u:"Unit 1 & 2",q:'Who stated that "Ethics is the activity of man directed to secure the inner perfection of his own personality"?',o:["Immanuel Kant","Aristotle","Albert Schweitzer","John Stuart Mill"],a:2,e:"This definition is credited to Albert Schweitzer."},
+{u:"Unit 1 & 2",q:'"Values" are defined as ______.',o:["Things that are important to a person and guide decisions","Rules and standards that guide acceptable behaviour in society","Personal beliefs about what is right and wrong","Legal guidelines enforced by a governing body"],a:0,e:"Values are personal priorities that steer choices; (b) is ethics and (c) is morals."},
+{u:"Unit 1 & 2",q:"Which of the following is NOT one of the senses of engineering ethics?",o:["Activity and area of inquiry","Understanding moral values","Resolving moral issues","Justifying personal issues"],a:3,e:"Engineering ethics deals with moral issues, not with justifying personal ones."},
+{u:"Unit 1 & 2",q:"Personal beliefs about what is right and wrong are known as ______.",o:["Ethics","Morals","Civic virtues","Work ethics"],a:1,e:"Morals are personal; ethics are the shared standards."},
+{u:"Unit 1 & 2",q:"Rules and standards that guide acceptable behaviour in society or a profession are ______.",o:["Morals","Personal core values","Ethics","Dilemmas"],a:2,e:"Ethics are the externally agreed standards of conduct."},
+{u:"Unit 1 & 2",q:"A software engineer follows her company's data integrity policy because she feels falsifying data is wrong. She is aligning her morals with company ______.",o:["Rules of law","Ethics","Egoism","Subjectivism"],a:1,e:"Personal morals matching the organisation's code of ethics."},
+{u:"Unit 1 & 2",q:"An ethical dilemma occurs primarily when ______.",o:["One option is clearly wrong and illegal","Both options seem right or both have undesirable consequences","An individual acts solely out of self-interest","Rules are strictly followed without conflict"],a:1,e:"A dilemma needs two defensible but conflicting choices."},
+{u:"Unit 1 & 2",q:"In the HR layoff dilemma, keeping the information confidential demonstrates ______.",o:["Lack of empathy","Fulfilling professional duty","Self-confidence","Personal core values"],a:1,e:"Confidentiality is owed as part of the professional role."},
+{u:"Unit 1 & 2",q:"The conflicting concepts in the HR layoff scenario are ______.",o:["Honesty vs. Courage","Compassion vs. Professional Responsibility","Civic Virtue vs. Service Learning","Academic Integrity vs. Empathy"],a:1,e:"Sympathy for the employee pulls against the duty to stay silent."},
+{u:"Unit 1 & 2",q:"An employee reporting a company for illegally dumping waste into a river faces a dilemma between environmental protection and ______.",o:["Academic integrity","Job stability","Compassion for co-workers","Personal confidence"],a:1,e:"Reporting risks the reporter's own job."},
+{u:"Unit 1 & 2",q:"Which of the following is classified as a civic value?",o:["Honesty","Courage","Service learning","Self-confidence"],a:2,e:"Service learning is directed at the community, so it is civic."},
+{u:"Unit 1 & 2",q:"Which of the following is classified under personal core values?",o:["Work ethics","Civic virtue","Empathy","Social expectations"],a:2,e:"Empathy is an inner personal trait."},
+{u:"Unit 1 & 2",q:'"Voting in elections" and "respecting traffic rules" are examples of ______.',o:["Civic values","Personal core values","Professional code","Academic policy"],a:0,e:"Both are duties owed to society as a citizen."},
+{u:"Unit 1 & 2",q:'"Keeping promises made to your team" is classified under ______.',o:["Civic values","Personal core values","Social expectations","Professional guidelines"],a:1,e:"Promise-keeping flows from personal integrity."},
+{u:"Unit 1 & 2",q:"Rahul organising a book drive, cleaning the library and starting a weekly reading programme is an example of ______.",o:["Work ethics","Service learning","Academic integrity","Social expectation"],a:1,e:"Learning combined with voluntary community service."},
+{u:"Unit 1 & 2",q:"The ability to understand and share the feelings of another person is ______.",o:["Sympathy","Empathy","Self-confidence","Civic virtue"],a:1,e:"Sympathy is feeling for someone; empathy is feeling with them."},
+{u:"Unit 1 & 2",q:"Which moral reasoning judges an action as right or wrong based on its consequences?",o:["Categorical moral reasoning","Consequential moral reasoning","Deontological ethics","Virtue ethics"],a:1,e:"Consequential reasoning looks only at outcomes."},
+{u:"Unit 1 & 2",q:"Categorical moral reasoning is also known as ______.",o:["Teleological ethics","Deontological ethics","Utilitarianism","Virtue ethics"],a:1,e:"Categorical reasoning judges acts by duty and rules."},
+{u:"Unit 1 & 2",q:'"An engineer should never falsify reports under any circumstance" represents ______.',o:["Consequential moral reasoning","Categorical moral reasoning","Utilitarian moral reasoning","Relativism"],a:1,e:"An absolute rule with no exception for outcomes."},
+{u:"Unit 1 & 2",q:"A situation where a person must choose between conflicting ethical responsibilities, compromising some ethical value, is a ______.",o:["Moral autonomy","Moral dilemma","Moral inquiry","Moral nihilism"],a:1,e:"Definition of a moral dilemma."},
+{u:"Unit 1 & 2",q:"Thinking independently and deciding on one's own moral judgment rather than blindly following orders is ______.",o:["Moral relativism","Moral nihilism","Moral autonomy","Moral dilemma"],a:2,e:"Autonomy = self-governing moral judgment."},
+{u:"Unit 1 & 2",q:'Which type of inquiry asks "What should be done?"',o:["Factual inquiry","Conceptual inquiry","Normative inquiry","Applied inquiry"],a:2,e:"Normative inquiry sets out what ought to be done."},
+{u:"Unit 1 & 2",q:'"What is meant by a conflict of interest?" is which type of inquiry?',o:["Normative inquiry","Conceptual inquiry","Factual inquiry","Applied inquiry"],a:1,e:"Conceptual inquiry clarifies the meaning of a term."},
+{u:"Unit 1 & 2",q:'An inquiry asking "How can ethics solve the problem?" is ______.',o:["Normative inquiry","Conceptual inquiry","Factual inquiry","Applied inquiry"],a:3,e:"Applying ethical ideas to a real case."},
+{u:"Unit 1 & 2",q:'"What caused the bridge to collapse?" is an example of a ______.',o:["Normative inquiry","Factual inquiry","Conceptual inquiry","Applied inquiry"],a:1,e:"It seeks evidence and facts."},
+{u:"Unit 1 & 2",q:"At which stage of Kohlberg's pre-conventional level is reasoning based on reward and avoiding punishment?",o:["Social contract","Law and order morality","Avoiding punishment and self-interest","Universal ethical principle"],a:2,e:"Stage 1–2 of the pre-conventional level."},
+{u:"Unit 1 & 2",q:'The "good boy/good girl attitude" and "law and order morality" stages belong to which Kohlberg level?',o:["Pre-conventional level","Conventional level","Post-conventional level","None of the above"],a:1,e:"Conventional level: approval of others and obeying the law."},
+{u:"Unit 1 & 2",q:"What is a major criticism of Kohlberg's theory of moral development?",o:["Focuses too much on care ethics","Gender bias and overemphasis on justice","Lacks cognitive aspects","Ignores adulthood entirely"],a:1,e:"Gilligan's criticism: the sample was male and justice-centred."},
+{u:"Unit 1 & 2",q:"Carol Gilligan's theory of moral development is based on the ______.",o:["Ethics of justice","Ethics of care","Deontological framework","Egoism theory"],a:1,e:"Gilligan stresses care, relationships and responsibility."},
+{u:"Unit 1 & 2",q:"In Gilligan's pre-conventional level, the individual's primary focus is on ______.",o:["Caring for others","Their own needs, interests and survival","Universal justice","Social norms"],a:1,e:"It begins with self-care and survival."},
+{u:"Unit 1 & 2",q:"At Gilligan's conventional level, moral decisions prioritise ______.",o:["Personal survival","Putting others' needs before one's own","Logical abstraction","Avoiding legal penalties"],a:1,e:"Self-sacrifice is equated with goodness at this level."},
+{u:"Unit 1 & 2",q:"The post-conventional level of Gilligan's theory involves ______.",o:["Following absolute laws strictly","Focusing solely on self-interest","Balancing care for oneself and others without causing harm","Maximising economic gains"],a:2,e:"Mature care balances self and others."},
+{u:"Unit 1 & 2",q:"What is a primary distinction between Kohlberg's and Gilligan's theories?",o:["Kohlberg focused on relationships; Gilligan on rights","Kohlberg focused on justice/rights; Gilligan on care/relationships","Gilligan's theory came in 1958 and Kohlberg's in 1982","Both use identical stages"],a:1,e:"Justice orientation versus care orientation."},
+{u:"Unit 1 & 2",q:"The belief that moral judgments depend solely on an individual's personal beliefs or feelings is ______.",o:["Subjectivism","Relativism","Egoism","Moral nihilism"],a:0,e:"Subjectivism locates morality in the individual."},
+{u:"Unit 1 & 2",q:'"Moral values differ across cultures, societies or time periods, and there is no single universal standard." This defines ______.',o:["Moral autonomy","Relativism","Egoism","Deontology"],a:1,e:"Relativism ties morality to the culture or period."},
+{u:"Unit 1 & 2",q:"The view that people act mainly to promote their own self-interest rather than others' welfare is ______.",o:["Subjectivism","Relativism","Egoism","Nihilism"],a:2,e:"Egoism makes self-interest the driver of action."},
+{u:"Unit 1 & 2",q:"Which belief claims there are no objective moral truths and that right and wrong have no real basis?",o:["Relativism","Moral nihilism","Utilitarianism","Consensus"],a:1,e:"Nihilism denies morality altogether, not just universality."},
+{u:"Unit 1 & 2",q:"Santhara (Sallekhana) is given as an example illustrating which moral challenge?",o:["Subjectivism","Cultural relativism","Egoism","Deontology"],a:1,e:"A practice accepted in one culture and contested in another."},
+{u:"Unit 1 & 2",q:"General agreement among individuals or groups on what is morally right is known as ______.",o:["Controversy","Consensus","Professionalism","Autonomy"],a:1,e:"Consensus is shared agreement."},
+{u:"Unit 1 & 2",q:"A disagreement on ethical issues, such as how autonomous vehicles should handle accidents, is called ______.",o:["Consensus","Controversy","Profession","Deontology"],a:1,e:"Controversy is the opposite of consensus."},
+{u:"Unit 1 & 2",q:"An occupation requiring specialised knowledge, formal education, training and adherence to ethical standards to serve society is a ______.",o:["Trade","Profession","Hobby","Practice"],a:1,e:"These four features define a profession."},
+{u:"Unit 1 & 2",q:"The role model in which a professional brings positive change and assists social progress is ______.",o:["Social enabler and catalyst","Game player","Guardian","Bureaucratic servant"],a:0,e:"The social enabler helps society move forward."},
+{u:"Unit 1 & 2",q:"Which framework focuses on duty and rules, holding that actions are right or wrong regardless of outcomes?",o:["Utilitarianism","Deontology","Virtue ethics","Care ethics"],a:1,e:"Deontology judges the act, not the result."},
+{u:"Unit 1 & 2",q:"Who is the philosopher most associated with deontological ethics?",o:["John Stuart Mill","Immanuel Kant","Aristotle","Carol Gilligan"],a:1,e:"Kant and the categorical imperative."},
+{u:"Unit 1 & 2",q:"Utilitarianism holds that the right action maximises happiness for the greatest number. Who advocated this?",o:["Immanuel Kant","John Stuart Mill","Aristotle","Lawrence Kohlberg"],a:1,e:"Mill (with Bentham) developed utilitarianism."},
+{u:"Unit 1 & 2",q:"Which framework focuses on moral character, arguing that good people naturally perform good actions?",o:["Deontology","Utilitarianism","Virtue ethics","Relativism"],a:2,e:"Virtue ethics starts from character, not rules or results."},
+{u:"Unit 1 & 2",q:"Virtue ethics was prominently developed by which ancient Greek philosopher?",o:["Plato","Aristotle","Socrates","Pythagoras"],a:1,e:"Aristotle, in the Nicomachean Ethics."},
+{u:"Unit 1 & 2",q:'A professional under the "game player" model primarily focuses on ______.',o:["Protecting environmental resources for future generations","Obedience to international human rights laws","Strategic competition and maximum gain while keeping within the legal rules","Serving society's poorest communities"],a:2,e:"Treats work as a game played well within the rules."},
+{u:"Unit 1 & 2",q:"A technician who feels their ultimate duty is owed strictly to the employer's chain of command embodies the ______.",o:["Saviour","Social servant","Bureaucratic servant","Guardian"],a:2,e:"The bureaucratic servant serves the management hierarchy."},
+{u:"Unit 1 & 2",q:"A professional who saves society from poverty, ill health and inefficiency and guides it to a better future is a ______.",o:["Saviour","Bureaucratic servant","Game player","Social enabler"],a:0,e:"The saviour model rescues society from major problems."},
+
+/* ---------- UNIT 3 ---------- */
+{u:"Unit 3",q:"Attitude loyalty includes willingness to meet moral duties with ______.",o:["Competition and pressure","Fear and punishment","Attachment, conviction and trust","Salary and incentives"],a:2,e:"Attitude loyalty is about inner commitment, not compliance."},
+{u:"Unit 3",q:"Attitude loyalty is more a ______.",o:["Legal requirement","Virtue than an obligation","Financial benefit","Management technique"],a:1,e:"It cannot be demanded, only shown; hence a virtue."},
+{u:"Unit 3",q:"Loyalty does not merit support when employees work together to ______.",o:["Improve productivity","Develop communication","Falsify records","Improve teamwork"],a:2,e:"Loyalty never justifies wrongdoing."},
+{u:"Unit 3",q:"Authority helps in transferring decisions into ______.",o:["Policies only","Actions","Profits","Contracts"],a:1,e:"Authority is what turns a decision into action."},
+{u:"Unit 3",q:"Institutional authority is exercised ______.",o:["Outside the organization","Within the organization","Only by customers","Only by professional societies"],a:1,e:"It is granted by, and limited to, the institution."},
+{u:"Unit 3",q:"Which of the following is associated with institutional authority?",o:["Resource allocation","Personal friendship","Social entertainment","None of the above"],a:0,e:"Allocating resources is a power the post carries."},
+{u:"Unit 3",q:"Expert authority is based mainly on ______.",o:["Position alone","Seniority alone","Special knowledge, skills and competence","Salary level"],a:2,e:"Expert authority is earned through competence."},
+{u:"Unit 3",q:"Advisers, experts and consultants are examples associated with ______.",o:["Institutional authority","Expert authority","Legal authority","Financial authority"],a:1,e:"They influence through knowledge, not position."},
+{u:"Unit 3",q:"The main purpose of collective bargaining is to improve the ______.",o:["Economic interests of worker members","Technical skills of managers","Advertising of products","Quality of raw materials"],a:0,e:"Unions bargain chiefly over wages and conditions."},
+{u:"Unit 3",q:"Collective bargaining commonly includes ______.",o:["Negotiation","Product design","Advertising","Recruitment only"],a:0,e:"Negotiation between union and management is its core."},
+{u:"Unit 3",q:"Declaration of a strike may form part of ______.",o:["Performance appraisal","Collective bargaining","Product development","Quality control"],a:1,e:"A strike is a bargaining pressure tactic."},
+{u:"Unit 3",q:"One benefit attributed to unions is ______.",o:["Reducing job security","Improving job security","Increasing discrimination","Reducing employee participation"],a:1,e:"Unions bargain for secure tenure."},
+{u:"Unit 3",q:"Unions can provide an effective mechanism for ______.",o:["Grievance redressal","Product pricing","Market forecasting","Patent registration"],a:0,e:"Grievance handling is a standard union function."},
+{u:"Unit 3",q:"Confidentiality is considered an important aspect of ______.",o:["Teamwork","Marketing","Recruitment","Competition"],a:0,e:"Teams work on trust that information is kept safe."},
+{u:"Unit 3",q:"Rights-based theory supports confidentiality because it protects ______.",o:["Stakeholders' rights","Only managers' salaries","Advertising rights","Market competition"],a:0,e:"The right to privacy and property of stakeholders."},
+{u:"Unit 3",q:"According to duty theory, employees and employers have a duty to maintain ______.",o:["Competition","Mutual trust","Secrecy from everyone","Higher profits"],a:1,e:"Confidentiality rests on a duty of mutual trust."},
+{u:"Unit 3",q:"The utilitarian justification of confidentiality is concerned with producing ______.",o:["Most good to most people","Maximum profit to managers","Benefits only to employees","Benefits only to customers"],a:0,e:"Keeping confidence produces the greatest overall good."},
+{u:"Unit 3",q:"A conflict of interest occurs when ______.",o:["Personal interests may interfere with professional responsibilities","Employees work together","Employees receive training","Managers conduct meetings"],a:0,e:"Private interest competing with professional judgment."},
+{u:"Unit 3",q:"One possible effect of moonlighting is ______.",o:["Improved concentration in every job","Exhaustion and reduced job performance","Elimination of conflicts","Increased confidentiality"],a:1,e:"A second job drains energy from the first."},
+{u:"Unit 3",q:"Theft by an employee in connection with employment can be considered ______.",o:["Occupational crime","Collective bargaining","Professional recognition","Confidentiality"],a:0,e:"Crime committed in the course of one's occupation."},
+{u:"Unit 3",q:"Occupational crime is mainly related to ______.",o:["Unethical or criminal conduct connected with employment","Employee recreation","Professional training","Team building"],a:0,e:"It is defined by its link to the job."},
+{u:"Unit 3",q:"An organization can reduce workplace risks through proper ______.",o:["Safety and health practices","Gift-giving","Insider trading","Discrimination"],a:0,e:"Safety and health measures cut risk at source."},
+{u:"Unit 3",q:"The right of non-discrimination means employees should not face ______.",o:["Morally unjust treatment","Professional training","Fair evaluation","Reasonable supervision"],a:0,e:"It bars unjust treatment, not legitimate supervision."},
+{u:"Unit 3",q:"The right to refuse to participate in unethical activities is called ______.",o:["Right of conscientious refusal","Right of equal opportunity","Right of property","Right of privacy"],a:0,e:"Conscientious refusal protects the professional's conscience."},
+{u:"Unit 3",q:"An employee should have the right to refuse an assignment when it ______.",o:["Violates personal conscience and creates a serious ethical concern","Requires teamwork","Requires professional knowledge","Requires additional learning"],a:0,e:"Difficulty is not a ground; a serious ethical violation is."},
+{u:"Unit 3",q:"Equal opportunity means employees should not be discriminated against on grounds such as ______.",o:["Caste, sex, religion, creed and language","Skill and performance","Training and experience","Work quality"],a:0,e:"Merit-based grounds are legitimate; identity-based ones are not."},
+{u:"Unit 3",q:"Article 15 of the Indian Constitution prohibits discrimination on grounds such as ______.",o:["Religion, race, caste, sex or place of birth","Salary and experience","Job position and designation","Technical qualification"],a:0,e:"Those five grounds are named in Article 15."},
+{u:"Unit 3",q:"Which fundamental right is directly relevant to protection against forced labour?",o:["Cultural Rights","Right to Property","Right against Exploitation","Right to Religion"],a:2,e:"Articles 23–24 bar forced labour and child labour."},
+{u:"Unit 3",q:"The constitutional protection of life and personal liberty is particularly relevant to ______.",o:["Workplace safety and dignity","Product pricing","Patent registration","Collective bargaining alone"],a:0,e:"Article 21 covers a safe and dignified working life."},
+{u:"Unit 3",q:"POSH stands for ______.",o:["Prevention of Sexual Harassment","Protection of Social Health","Prevention of Social Harm","Professional Organisation for Safety and Health"],a:0,e:"Prevention of Sexual Harassment at the workplace."},
+{u:"Unit 3",q:"The POSH Act was enacted in ______.",o:["2005","2010","2013","2020"],a:2,e:"The POSH Act came into force in 2013."},
+{u:"Unit 3",q:"The Right to Information Act was enacted in ______.",o:["1991","2000","2005","2013"],a:2,e:"RTI Act, 2005."},
+{u:"Unit 3",q:"The main purpose of the Right to Information Act, 2005 is to promote ______.",o:["Transparency and accountability","Workplace discrimination","Patent protection","Trade secrets"],a:0,e:"It opens public authorities to citizen scrutiny."},
+{u:"Unit 3",q:"IPR stands for ______.",o:["Intellectual Property Rights","Industrial Professional Regulations","International Patent Rules","Intellectual Personnel Rights"],a:0,e:"Covers patents, copyright, trademarks and designs."},
+{u:"Unit 3",q:"Copying another person's original work and presenting it as one's own is ______.",o:["Plagiarism","Collective bargaining","Delegation","Conscientious refusal"],a:0,e:"Passing off another's work as your own."},
+{u:"Unit 3",q:"Treating employees with dignity and respect is part of ______.",o:["Professional ethics","Occupational crime","Insider trading","Intellectual property"],a:0,e:"Respect for persons is a core professional duty."},
+{u:"Unit 3",q:"An employee refuses to falsify laboratory results despite pressure from a manager. This is ______.",o:["Conscientious refusal","Moonlighting","Collective bargaining","Occupational crime"],a:0,e:"Refusing an unethical order on conscience."},
+{u:"Unit 3",q:"An employee uses confidential information about an upcoming merger to buy shares for a friend. This is ______.",o:["Collective bargaining","Professional conscience","Employee welfare","Misuse of insider information"],a:3,e:"Classic insider trading."},
+{u:"Unit 3",q:"An employee reports serious unethical conduct to the appropriate authority after internal attempts fail. This is ______.",o:["Whistle-blowing","Moonlighting","Trade marking","Copyright"],a:0,e:"External disclosure after internal channels are exhausted."},
+{u:"Unit 3",q:"Which is an important reason for whistle-blowing?",o:["To obtain a promotion","To prevent serious harm or wrongdoing","To create disagreement among employees","To disclose confidential information unnecessarily"],a:1,e:"Preventing harm is the only justifying motive."},
+{u:"Unit 3",q:"Which of the following should a responsible whistleblower avoid?",o:["Providing false allegations deliberately","Maintaining relevant records","Reporting serious wrongdoing","Following an appropriate reporting procedure"],a:0,e:"Allegations must be documented and made in good faith."},
+{u:"Unit 3",q:"The main purpose of the Factories Act, 1948 relates to ______.",o:["Income-tax collection","Intellectual property protection","Regulation of labour in factories, including health and safety","Regulation of international trade"],a:2,e:"It governs working conditions, health and safety in factories."},
+{u:"Unit 3",q:"Which situation is most closely associated with professional responsibility?",o:["Concealing a known safety defect","Reporting a serious safety risk before it causes harm","Ignoring workplace rules","Using company property for personal purposes"],a:1,e:"Acting to prevent harm in time."},
+{u:"Unit 3",q:"If management receives a credible warning about an imminent workplace danger, the appropriate response is to ______.",o:["Delay action until an accident occurs","Punish the employee who reported it","Keep the information secret from everyone","Take remedial action and address the safety concern"],a:3,e:"Act on the warning and fix the hazard."},
+{u:"Unit 3",q:"What is the primary purpose of a Non-Disclosure Agreement (NDA)?",o:["To increase an employee's salary","To protect confidential information from unauthorized disclosure","To establish working hours","To determine promotion criteria"],a:1,e:"An NDA binds the parties to secrecy."},
+{u:"Unit 3",q:"Which information is most likely to be protected by an NDA?",o:["A company's publicly available advertisement","Information published on the company's website","Confidential product designs and business strategies","General information available in newspapers"],a:2,e:"Only information not already public can be protected."},
+{u:"Unit 3",q:"Which of the following is an example of corporate cheating?",o:["Providing accurate financial information","Following the organization's code of conduct","Deliberately falsifying records to mislead stakeholders","Reporting unethical practices"],a:2,e:"Deliberate deception of stakeholders."},
+{u:"Unit 3",q:"Corporate cheating can adversely affect ______.",o:["Only the person committing the act","Employees, investors, customers and other stakeholders","Only the company's competitors","Only government departments"],a:1,e:"The harm spreads across every stakeholder group."},
+{u:"Unit 3",q:"A code of conduct primarily provides ______.",o:["Guidelines for expected ethical and professional behaviour","A list of employee salaries","A company's marketing plan","Rules for calculating profit"],a:0,e:"It sets out expected behaviour."},
+{u:"Unit 3",q:"A professional code of conduct is important because it ______.",o:["Supports ethical decision-making and professional integrity","Allows employees to ignore organizational rules","Encourages employees to hide wrongdoing","Removes individual responsibility"],a:0,e:"A code guides judgment; it never removes responsibility."},
+
+/* ---------- UNIT 4 (OFFICIAL — professor-prepared Global Issues bank) ---------- */
+{u:"Unit 4 (Official)",q:"Globalization mainly refers to the integration of countries through:",o:["Only political agreements","Commerce, technology transfer, information and culture","Only military activities","Only educational exchanges"],a:1,e:"Globalization spans trade, technology, information and culture, not just one channel."},
+{u:"Unit 4 (Official)",q:"An organization that establishes business in more than one country is called a:",o:["Domestic corporation","Public corporation","Multinational corporation","Cooperative society"],a:2,e:"MNC = business operating across more than one country."},
+{u:"Unit 4 (Official)",q:"In an MNC, the headquarters are generally located in the:",o:["Host country","Home country","Neighbouring country","Developing country only"],a:1,e:"The home country is where the MNC originates and is headquartered."},
+{u:"Unit 4 (Official)",q:"One advantage available to MNCs operating in developing countries is:",o:["Expensive labour","Lack of natural resources","Inexpensive labour","Absence of markets"],a:2,e:"Lower labour costs are a key draw for MNCs in developing countries."},
+{u:"Unit 4 (Official)",q:"Which is a possible benefit of MNCs to developing countries?",o:["Loss of all employment","Fresh job opportunities","Elimination of technology","Reduction in technical skills"],a:1,e:"MNCs typically create new jobs in the host country."},
+{u:"Unit 4 (Official)",q:"Which of the following is a possible threat of globalization mentioned in the text?",o:["Technology transfer","Higher remuneration","Exploitation of natural resources","Creation of employment"],a:2,e:"Resource exploitation is a cited downside of globalization."},
+{u:"Unit 4 (Official)",q:"Which of the following is NOT listed as a benefit to developing countries from MNCs?",o:["Fresh employment opportunities","Transfer of technology","Social benefits from wealth creation","Guaranteed elimination of poverty"],a:3,e:"MNCs help, but they don't guarantee poverty is eliminated."},
+{u:"Unit 4 (Official)",q:"The ethical responsibilities of MNCs operating in host countries are discussed using the framework of:",o:["Rights ethics","Market ethics","Military ethics","Political ethics"],a:0,e:"MNC obligations are framed around respecting basic human rights."},
+{u:"Unit 4 (Official)",q:"Which of the following is an international human right mentioned in the textbook?",o:["Right to unlimited profit","Freedom from torture","Right to avoid taxation","Right to exploit resources"],a:1,e:"Freedom from torture is a recognised basic human right."},
+{u:"Unit 4 (Official)",q:"MNCs should provide safety gadgets to workers:",o:["Only when the host country's law demands them","Even if the host country's laws do not suggest such measures","Only to managers","Only to foreign workers"],a:1,e:"Worker safety is an ethical duty independent of local legal minimums."},
+{u:"Unit 4 (Official)",q:"Which of the following is included among the international rights discussed for MNCs?",o:["Freedom of speech and forming association","Freedom to exploit workers","Freedom from taxation","Freedom to ignore local culture"],a:0,e:"Freedom of speech and association is a recognised worker right."},
+{u:"Unit 4 (Official)",q:"Technology transfer means:",o:["Destruction of old technology","Moving technology to a new setting and implementing it there","Selling computers only","Importing raw materials"],a:1,e:"Technology transfer is relocating and applying technology in a new setting."},
+{u:"Unit 4 (Official)",q:"Technology transfer includes:",o:["Only machines","Only software","Hardware and technical, organizational and managerial techniques","Only financial resources"],a:2,e:"It covers hardware plus the techniques needed to use it."},
+{u:"Unit 4 (Official)",q:"Technology can be transferred from:",o:["Laboratory to factory","One country to another","Both A and B","Neither A nor B"],a:2,e:"Transfer happens both across settings and across borders."},
+{u:"Unit 4 (Official)",q:"Which of the following can effect technology transfer?",o:["Governments","Universities","MNCs","All of the above"],a:3,e:"Many actors — government, academia and MNCs — can transfer technology."},
+{u:"Unit 4 (Official)",q:"Appropriate technology refers to:",o:["The most expensive technology available","The most sophisticated technology regardless of circumstances","The most suitable technology for a particular new situation","Technology used only by developed countries"],a:2,e:"Fit for the situation matters more than sophistication or cost."},
+{u:"Unit 4 (Official)",q:"Appropriate technology should ensure:",o:["Maximum profit only","Human needs and environmental protection","Maximum automation only","Elimination of traditional practices"],a:1,e:"It balances meeting human needs with protecting the environment."},
+{u:"Unit 4 (Official)",q:"Which factor can influence whether a technology is appropriate?",o:["Physical conditions","Social acceptability","Available resources","All of the above"],a:3,e:"Appropriateness depends on physical, social and resource factors together."},
+{u:"Unit 4 (Official)",q:"Ethical relativism suggests that actions may be morally right according to:",o:["Only the home country's standards","The laws, customs and values of a society","Only international law","Only company policy"],a:1,e:"Relativism judges actions against the local society's own standards."},
+{u:"Unit 4 (Official)",q:"Ethical absolutism involves an organization applying:",o:["Only host-country customs","Home-country laws and standards without adjustment to host culture","No ethical standards","Only employee preferences"],a:1,e:"Absolutism carries home-country standards abroad unchanged."},
+{u:"Unit 4 (Official)",q:"Ethical relationalism/contextualism makes moral judgments:",o:["Without considering circumstances","In relation to locally prevailing factors","Only according to company profits","Only according to foreign laws"],a:1,e:"Contextualism weighs the local situation in forming a judgment."},
+{u:"Unit 4 (Official)",q:"Ethical pluralism accepts:",o:["Only one possible moral solution","More than one justifiable moral solution","No moral solutions","Only the MNC's solution"],a:1,e:"Pluralism allows several defensible moral answers to coexist."},
+{u:"Unit 4 (Official)",q:"Environmental ethics is primarily the study of:",o:["Financial management","Moral issues concerning the environment","Computer programming","Corporate taxation"],a:1,e:"It is the branch of ethics dealing with the environment."},
+{u:"Unit 4 (Official)",q:"Environmental ethics also concerns:",o:["Moral perspectives, beliefs and attitudes regarding environmental issues","Only environmental laws","Only industrial production","Only climate statistics"],a:0,e:"It covers attitudes and beliefs, not just the law."},
+{u:"Unit 4 (Official)",q:"Engineers should design:",o:["Only cheaper machines","Eco-friendly tools, machines, products, processes and projects","Products without considering environmental impact","Products only for short-term use"],a:1,e:"Environmentally responsible design is an engineering duty."},
+{u:"Unit 4 (Official)",q:"Sustainable development aims to:",o:["Meet present needs while ensuring future generations can meet their needs","Maximize present consumption","Stop all technological development","Eliminate industrial development"],a:0,e:"The classic definition of sustainable development."},
+{u:"Unit 4 (Official)",q:"One objective of environmental ethics is to slow down:",o:["Human education","Exploitation of natural resources","Technology transfer","Scientific research"],a:1,e:"Curbing resource exploitation is a core aim."},
+{u:"Unit 4 (Official)",q:"According to the textbook, engineers as experimenters have a duty to conduct:",o:["Environmental impact assessment","Political campaigns","Market speculation","Advertising analysis"],a:0,e:"Assessing environmental impact is part of the engineer's role."},
+{u:"Unit 4 (Official)",q:"Establishing standards in environmental ethics involves determining:",o:["Employee salaries","Tolerable and actual pollution levels","Product advertisements","Market share"],a:1,e:"Standards set what pollution level is acceptable versus actual."},
+{u:"Unit 4 (Official)",q:"Environmental countermeasures involve:",o:["Ignoring pollution","Studying protective or eliminating measures for implementation","Increasing pollution","Avoiding environmental education"],a:1,e:"Countermeasures are the protective steps designed and put in place."},
+{u:"Unit 4 (Official)",q:"Environmental awareness involves:",o:["Educating people about environmental practices and remedies","Avoiding environmental information","Increasing resource exploitation","Ignoring pollution"],a:0,e:"Awareness means actively educating people, not withholding information."},
+{u:"Unit 4 (Official)",q:"Human-centered environmental ethics considers moral worth primarily in:",o:["Machines","Human beings","Factories","Computers"],a:1,e:"This view centres moral concern on humans."},
+{u:"Unit 4 (Official)",q:"Nature-centered ethics emphasizes:",o:["The worth of all living beings and organisms","Only human profit","Only industrial development","Only technological advancement"],a:0,e:"It extends moral worth to all living things, not just humans."},
+{u:"Unit 4 (Official)",q:"Which concept is associated with Hinduism in the textbook's discussion of nature-centered ethics?",o:["Ahimsa toward living beings","Unlimited exploitation","Industrial domination","Technological isolation"],a:0,e:"Ahimsa (non-violence toward living beings) is the cited example."},
+{u:"Unit 4 (Official)",q:"Computer ethics is concerned with:",o:["Only computer hardware","The nature and social impact of computer technology and ethical use of computers","Only computer programming languages","Only internet speed"],a:1,e:"It covers both the social impact and the ethical use of computing."},
+{u:"Unit 4 (Official)",q:"Which of the following is an issue in computer ethics?",o:["Privacy","Intellectual property","Free speech","All of the above"],a:3,e:"Privacy, IP and free speech are all recurring computer-ethics issues."},
+{u:"Unit 4 (Official)",q:"In computer ethics, a computer may be:",o:["Only an object","Only an instrument","An instrument or object of an unethical act","Neither an instrument nor an object"],a:2,e:"A computer can be the tool used, or the target, of wrongdoing."},
+{u:"Unit 4 (Official)",q:"Using a computer to access another person's bank account and withdraw money is an example of:",o:["Ethical technology transfer","Computer as an instrument of unethical action","Environmental ethics","Appropriate technology"],a:1,e:"Here the computer is the instrument used to commit the act."},
+{u:"Unit 4 (Official)",q:"Hacking is primarily associated with:",o:["Accessing software or information from other computers without authorization","Environmental protection","Technology transfer","Employee training"],a:0,e:"Hacking means unauthorized access to systems or data."},
+{u:"Unit 4 (Official)",q:"Spreading viruses can result in:",o:["Files being erased or changed","Improved privacy","Better security","Reduced computer dependence"],a:0,e:"Viruses damage or alter data and files."},
+{u:"Unit 4 (Official)",q:"A Trojan horse can be used to:",o:["Protect a computer from viruses","Distort messages and files","Improve environmental safety","Transfer technology"],a:1,e:"A Trojan horse hides malicious action that can distort data."},
+{u:"Unit 4 (Official)",q:"Which is an ethical problem created by computers in the workplace?",o:["Elimination of routine/manual jobs","Creation of IT-enabled jobs","Health and safety concerns","All of the above"],a:3,e:"Computers bring job displacement, new roles and health effects together."},
+{u:"Unit 4 (Official)",q:"Carpal Tunnel Syndrome is mentioned in the notes in relation to:",o:["Poor computer-related working conditions","Environmental pollution","Weapons development","MNC taxation"],a:0,e:"It's a repetitive-strain injury linked to poor computer ergonomics."},
+{u:"Unit 4 (Official)",q:"Poor ergonomic seating can contribute to:",o:["Back pain","Better productivity automatically","Increased privacy","Software copyright"],a:0,e:"Bad seating ergonomics is a cause of back pain."},
+{u:"Unit 4 (Official)",q:"Software errors can be particularly serious because they can:",o:["Stop an entire network","Improve network performance","Eliminate the need for testing","Prevent hacking automatically"],a:0,e:"A software fault can bring down an entire network."},
+{u:"Unit 4 (Official)",q:"Which is part of logical computer security?",o:["Privacy","Confidentiality","Integrity","All of the above"],a:3,e:"Logical security spans privacy, confidentiality and integrity together."},
+{u:"Unit 4 (Official)",q:"Integrity in computer security means:",o:["Data/program modifications are made only by authorized persons","Anyone can modify data","Data is always public","Passwords are unnecessary"],a:0,e:"Integrity restricts changes to authorized users only."},
+{u:"Unit 4 (Official)",q:"Which of the following helps protect computers against hacking?",o:["Firewalls","Licensed anti-virus software","Passwords and encryption","All of the above"],a:3,e:"Firewalls, anti-virus software and passwords/encryption all contribute."},
+{u:"Unit 4 (Official)",q:"Unauthorized use of personal information can be considered:",o:["Technology transfer","Theft","Sustainable development","Moral leadership"],a:1,e:"Misusing someone's personal data is treated as a form of theft."},
+{u:"Unit 4 (Official)",q:"Anonymity in computer communication can be beneficial because it can:",o:["Protect identity during sensitive medical or psychological discussions","Guarantee that all activities are ethical","Eliminate cybercrime","Remove privacy concerns"],a:0,e:"Anonymity helps people discuss sensitive matters safely."},
+{u:"Unit 4 (Official)",q:"According to the notes, anonymity can also be misused for:",o:["Money laundering and drug trafficking","Environmental education","Software testing","Technology transfer"],a:0,e:"The same anonymity that protects can also shield serious crime."},
+{u:"Unit 4 (Official)",q:"Which organizations are mentioned as having established codes of ethics for computer professionals?",o:["IEEE and ACM","WHO and UNESCO","WTO and IMF","NASA and ISRO"],a:0,e:"IEEE and ACM are the cited professional bodies with computing codes."},
+{u:"Unit 4 (Official)",q:"Military activities and world wars have historically stimulated:",o:["Technological growth","Elimination of engineering","Environmental protection only","Reduction in research"],a:0,e:"Wartime demand has historically driven technological advances."},
+{u:"Unit 4 (Official)",q:"One reason engineers may participate in weapons development is:",o:["High salary/job opportunities","Avoiding all technical work","Eliminating national security","Reducing scientific research"],a:0,e:"Career and pay incentives are a cited reason."},
+{u:"Unit 4 (Official)",q:"Another reason engineers may participate in weapons development is:",o:["Patriotic fervor and defense of the nation","Avoiding responsibility","Avoiding research","Increasing unemployment"],a:0,e:"Patriotism and national defence motivate some engineers."},
+{u:"Unit 4 (Official)",q:"According to the notes, weapons development raises ethical concerns involving:",o:["Integrity in experiments","Defense R&D; expenditure","Personal commitment and conscience","All of the above"],a:3,e:"Weapons work touches experimental integrity, spending and conscience together."},
+{u:"Unit 4 (Official)",q:"Weapons development can also raise issues of:",o:["Social justice and social health","Advertising only","Software copyright only","Employee recruitment only"],a:0,e:"Its broader impact includes social justice and public health concerns."},
+{u:"Unit 4 (Official)",q:"An engineer may justify involvement in weapons research by believing that it can:",o:["Reduce the risk from enemy weapons","Eliminate all wars immediately","Eliminate technology","Remove national security"],a:0,e:"A common justification is deterrence — reducing risk from adversaries."},
+{u:"Unit 4 (Official)",q:"One major responsibility of engineers as managers is to:",o:["Promote an ethical climate","Avoid organizational policies","Ignore conflicts","Focus only on profit"],a:0,e:"Setting an ethical tone in the organization is a manager's duty."},
+{u:"Unit 4 (Official)",q:"Engineers as managers should resolve conflicts by:",o:["Ignoring the problem","Developing mutual understanding and alternative solutions","Punishing everyone involved","Avoiding communication"],a:1,e:"Good conflict resolution seeks understanding and alternatives."},
+{u:"Unit 4 (Official)",q:"Engineers as managers have social responsibility toward:",o:["Only themselves","Stakeholders, customers and employers","Only competitors","Only government officials"],a:1,e:"Their responsibility spans stakeholders, customers and employers."},
+{u:"Unit 4 (Official)",q:"Engineers as managers are expected to develop:",o:["Wealth as well as welfare of society","Only personal wealth","Only company advertisements","Only technical products"],a:0,e:"Both economic wealth and social welfare are expected outcomes."},
+{u:"Unit 4 (Official)",q:"Which of the following best represents an ethical manager?",o:["Someone who hides conflicts","Someone who promotes an ethical organizational climate","Someone who ignores stakeholders","Someone who suppresses all criticism"],a:1,e:"Promoting an ethical climate is the defining trait here."},
+{u:"Unit 4 (Official)",q:"Which of the following is an ethical responsibility of consulting engineers?",o:["Proper advertising","Incompetent bidding","Misleading clients","Ignoring safety"],a:0,e:"Honest, proper advertising is expected of consultants."},
+{u:"Unit 4 (Official)",q:"Consulting engineers should be concerned about:",o:["Safety of clients","Only their own profit","Misrepresentation","Hiding relevant facts"],a:0,e:"Client safety is a primary duty."},
+{u:"Unit 4 (Official)",q:"Which of the following is associated with ethical consulting practice?",o:["Proper advertising and competitive bidding","Misleading advertising","Hiding safety risks","False claims of expertise"],a:0,e:"Honest advertising and fair, competitive bidding define ethical practice."},
+{u:"Unit 4 (Official)",q:"A consulting engineer's advertisement should NOT contain:",o:["Accurate information","Misrepresentation or omission of necessary facts","Professional qualifications","Relevant services"],a:1,e:"Misrepresenting or omitting facts is what must be avoided."},
+{u:"Unit 4 (Official)",q:"A consulting engineer should avoid advertisements that:",o:["Create unjustified expectations","Provide factual information","Explain services","State qualifications accurately"],a:0,e:"Setting unrealistic expectations is the thing to avoid."},
+{u:"Unit 4 (Official)",q:"A statement predicting future success in an advertisement is identified in the notes as:",o:["Appropriate professional advertising","Prohibited","Mandatory","A form of environmental ethics"],a:1,e:"Predicting success is explicitly flagged as not allowed."},
+{u:"Unit 4 (Official)",q:"Using slogans primarily to attract clients is identified as:",o:["A prohibited form of consultant advertising","Mandatory ethical behaviour","Technology transfer","Environmental assessment"],a:0,e:"Slogan-driven advertising to attract clients is treated as improper."},
+{u:"Unit 4 (Official)",q:"Moral leadership means:",o:["Dominance by a group","Motivating groups to achieve morally desirable goals using reasonable means","Maximizing authority","Controlling employees through fear"],a:1,e:"Moral leadership pairs good goals with reasonable, fair means."},
+{u:"Unit 4 (Official)",q:"In moral leadership, both the goals and the means should be:",o:["Financial","Moral","Political","Competitive"],a:1,e:"Both the ends and the means need to be morally sound."},
+{u:"Unit 4 (Official)",q:"Moral leaders should direct and motivate groups through:",o:["Morally desirable ways","Coercion","Fear","Manipulation"],a:0,e:"Legitimate, moral methods rather than coercion or fear."},
+{u:"Unit 4 (Official)",q:'"Morally creative" leadership involves:',o:["Ignoring values","Identifying important values, communicating them clearly and putting them into practice","Avoiding communication","Maximizing authority"],a:1,e:"It's about clearly living out identified values, not just naming them."},
+{u:"Unit 4 (Official)",q:"Engineers can demonstrate moral leadership through:",o:["Professional societies","Community service","Professional activities","All of the above"],a:3,e:"Moral leadership shows up across societies, service and professional work."},
+{u:"Unit 4 (Official)",q:"Providing engineering services without fee or at reduced fees to needy groups is called:",o:["Outsourcing","Pro bono service","Technology transfer","Ethical absolutism"],a:1,e:"Free or reduced-fee professional service is pro bono work."},
+{u:"Unit 4 (Official)",q:"Voluntarism or philanthropy is described as an avenue for:",o:["Moral leadership","Computer crime","Corporate cheating","Weapons development"],a:0,e:"Volunteering and philanthropy are ways to show moral leadership."},
+{u:"Unit 4 (Official)",q:"A professional code of ethics primarily provides:",o:["Guidelines for ethical professional behaviour","Employee salary details","Marketing strategies","Production targets only"],a:0,e:"A code of ethics sets out expected professional conduct."},
+{u:"Unit 4 (Official)",q:"Professional societies establish codes of conduct mainly to:",o:["Regulate professionals against unethical decisions and actions","Increase advertising","Eliminate professional autonomy","Increase product prices"],a:0,e:"Codes exist to steer members away from unethical conduct."},
+{u:"Unit 4 (Official)",q:"A code of conduct is useful because it helps professionals:",o:["Make ethical decisions","Ignore responsibility","Hide unethical actions","Avoid all regulations"],a:0,e:"It's a decision-making aid, not an excuse to avoid responsibility."},
+{u:"Unit 4 (Official)",q:"Which of the following is associated with the Chapter 5 discussion of codes?",o:["Engineering Council of India","TATA Group","Ethics and business conduct in MNCs","All of the above"],a:3,e:"All three examples appear in the chapter's discussion of codes."},
+{u:"Unit 4 (Official)",q:"Corporate social responsibility primarily concerns an organization's responsibility toward:",o:["Only shareholders","Society and relevant stakeholders","Only competitors","Only managers"],a:1,e:"CSR looks beyond shareholders to society and stakeholders broadly."},
+{u:"Unit 4 (Official)",q:"An MNC undertaking projects for social development in a host country can be considered an example of:",o:["Social responsibility","Computer crime","Ethical absolutism","Weapons development"],a:0,e:"Social-development projects are a direct expression of CSR."},
+{u:"Unit 4 (Official)",q:"Which action is most consistent with corporate social responsibility?",o:["Ignoring worker safety","Supporting social development and health/safety measures","Exploiting natural resources without concern","Hiding environmental damage"],a:1,e:"Supporting development and safety measures fits CSR; the others don't."},
+{u:"Unit 4 (Official)",q:"An MNC follows the laws of its home country strictly in a host country without adapting to local culture. This is:",o:["Ethical relativism","Ethical absolutism","Ethical pluralism","Ethical relationalism"],a:1,e:"Rigid home-country standards abroad is the definition of absolutism."},
+{u:"Unit 4 (Official)",q:"An MNC makes moral decisions according to local circumstances and customs while considering ethical factors. This is closest to:",o:["Ethical relationalism/contextualism","Ethical absolutism","Ethical isolationism","Ethical neutrality"],a:0,e:"Weighing local context against ethical factors is contextualism."},
+{u:"Unit 4 (Official)",q:"A technology is technically advanced but unsuitable for the local resources, environment and social conditions. It is:",o:["Necessarily appropriate technology","Not necessarily appropriate technology","Always sustainable technology","Automatically ethical technology"],a:1,e:"Advanced does not automatically mean appropriate for the setting."},
+{u:"Unit 4 (Official)",q:"Which sequence correctly represents the environmental duties of engineers?",o:["Advertise → Sell → Profit → Export","Impact assessment → Standards → Countermeasures → Awareness","Manufacture → Advertise → Import → Export","Research → Patent → Sell → Advertise"],a:1,e:"The environmental-duty sequence: assess, set standards, counter, raise awareness."},
+{u:"Unit 4 (Official)",q:"A programmer illegally accesses another company's database and changes its data. This is primarily:",o:["Computer ethics issue involving hacking","Appropriate technology","Moral leadership","Technology transfer"],a:0,e:"Unauthorized database access and alteration is hacking."},
+{u:"Unit 4 (Official)",q:"A company replaces routine jobs with computers but trains employees for skilled IT jobs. This illustrates:",o:["Only a negative effect of computers","A workplace challenge that can be addressed through training","Computer crime","Ethical absolutism"],a:1,e:"Displacement paired with retraining shows the challenge being managed."},
+{u:"Unit 4 (Official)",q:"Which pair is correctly matched?",o:["Logical security — fire protection only","Physical security — privacy","Logical security — confidentiality and integrity","Environmental ethics — hacking"],a:2,e:"Confidentiality and integrity belong under logical security."},
+{u:"Unit 4 (Official)",q:"Which situation represents the strongest ethical concern in autonomous computer systems?",o:["Automatic monitoring","An error in an automated defense system causing loss of human life","Faster data processing","Automatic printing"],a:1,e:"A fatal defense-system error is the gravest of these scenarios."},
+{u:"Unit 4 (Official)",q:"An engineer participates in weapons development because research may reduce risks from enemy weapons. This is presented in the notes as:",o:["One reason engineers may justify participation","Computer crime","Environmental negligence","Consulting malpractice"],a:0,e:"This is one of the cited justifications for weapons work."},
+{u:"Unit 4 (Official)",q:"A manager creates policies, resolves conflicts and considers the welfare of stakeholders. This best represents:",o:["Engineer as manager","Engineer as hacker","Engineer as weapon operator","Engineer as advertiser"],a:0,e:"Policy-making, conflict resolution and stakeholder welfare describe the manager role."},
+{u:"Unit 4 (Official)",q:"A consultant hides an important safety problem from a client to obtain a contract. This violates:",o:["Professional ethical responsibility","Appropriate technology","Computer security","Technology transfer"],a:0,e:"Concealing safety risks breaches the consultant's ethical duty."},
+{u:"Unit 4 (Official)",q:"Which moral leadership model gives the highest importance to the client while hiding unfavorable facts from public consideration?",o:["Value-neutral analyst","Value-guided advocate","Hired gun","Moral leader"],a:2,e:"The \"hired gun\" model puts the client first and hides unfavourable facts."},
+{u:"Unit 4 (Official)",q:"Which advisory model emphasizes impartiality and absence of bias?",o:["Hired gun","Value-neutral analyst","Value-guided advocate","Political advocate"],a:1,e:"The value-neutral analyst aims to stay impartial and unbiased."},
+{u:"Unit 4 (Official)",q:"Which advisory model emphasizes honesty, independence of judgment and importance of public welfare?",o:["Hired gun","Value-neutral analyst","Value-guided advocate","Client-only advocate"],a:2,e:"The value-guided advocate is honest, independent and public-minded."},
+{u:"Unit 4 (Official)",q:"An engineer provides professional service free of charge to a needy community. This is:",o:["Pro bono service","Ethical absolutism","Computer crime","Technology transfer"],a:0,e:"Free service to those in need is pro bono work."},
+];
+
+/* ============================================================
+   STATE + STORAGE
+   ============================================================ */
+const LS = {
+  get(k,d){ try{ const v=localStorage.getItem("pe_"+k); return v?JSON.parse(v):d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem("pe_"+k,JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem("pe_"+k); }catch(e){} }
+};
+
+let custom = LS.get("custom",[]);           // user-added sets
+let flags  = LS.get("flags",[]);            // flagged question keys
+let missed = LS.get("missed",[]);           // keys answered wrong
+let best   = LS.get("best",{});             // best % per set
+let opts   = LS.get("opts",{mode:"practice",shuffleQ:true,shuffleO:true});
+
+function allQ(){ return BANK.concat(custom); }
+function keyOf(q){ return q.u+"|"+q.q.slice(0,42); }
+function setNames(){ const s=[]; allQ().forEach(q=>{ if(!s.includes(q.u)) s.push(q.u); }); return s; }
+
+let run = null; // {items:[], i:0, answers:[]}
+
+/* ============================================================
+   HOME
+   ============================================================ */
+const $ = id => document.getElementById(id);
+
+function show(id){
+  ["home","quiz","result","browse","add"].forEach(s=>$(s).classList.toggle("hidden",s!==id));
+  window.scrollTo(0,0);
+}
+
+function renderHome(){
+  const list = $("setlist");
+  list.innerHTML = "";
+  const names = setNames();
+  names.forEach(n=>{
+    const qs = allQ().filter(q=>q.u===n);
+    const b = best[n]!=null ? "Best "+best[n]+"%" : "Not attempted";
+    list.appendChild(setBtn(qs.length, n, qs.length+" questions", b, ()=>start(qs,n)));
+  });
+
+  const all = allQ();
+  list.appendChild(setBtn(all.length,"Full mock — everything","All sets mixed together",
+    best["__all"]!=null?"Best "+best["__all"]+"%":"Not attempted",()=>start(all,"__all")));
+
+  const missedQs = all.filter(q=>missed.includes(keyOf(q)));
+  list.appendChild(setBtn(missedQs.length,"My mistakes","Questions you have got wrong",
+    missedQs.length?"":"Nothing here yet",()=>missedQs.length&&start(missedQs,null),!missedQs.length));
+
+  const flagQs = all.filter(q=>flags.includes(keyOf(q)));
+  list.appendChild(setBtn(flagQs.length,"Flagged","Questions you marked to revisit",
+    flagQs.length?"":"Nothing here yet",()=>flagQs.length&&start(flagQs,null),!flagQs.length));
+
+  if(!names.includes("Unit 4 (Official)")){
+    list.appendChild(setBtn("—","Unit 4 (CO4)","Not added yet — add it in “Add a question set”","",()=>{show("add");},true));
+  }
+
+  document.querySelectorAll('[data-opt="mode"]').forEach(b=>
+    b.setAttribute("aria-pressed", String(opts.mode===b.dataset.val)));
+  document.querySelectorAll('[data-toggle]').forEach(b=>
+    b.setAttribute("aria-pressed", String(!!opts[b.dataset.toggle])));
+}
+
+function setBtn(n,title,desc,stat,fn,disabled){
+  const el=document.createElement("button");
+  el.className="set"; if(disabled) el.disabled=true;
+  el.innerHTML='<span class="n"></span><span><span class="t"></span><br><span class="d"></span></span><span class="stat"></span>';
+  el.querySelector(".n").textContent=n;
+  el.querySelector(".t").textContent=title;
+  el.querySelector(".d").textContent=desc;
+  el.querySelector(".stat").textContent=stat||"";
+  el.onclick=fn;
+  return el;
+}
+
+document.querySelectorAll('[data-opt="mode"]').forEach(b=>b.onclick=()=>{
+  opts.mode=b.dataset.val; LS.set("opts",opts); renderHome();
+});
+document.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{
+  opts[b.dataset.toggle]=!opts[b.dataset.toggle]; LS.set("opts",opts); renderHome();
+});
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+function shuffled(a){ const x=a.slice(); for(let i=x.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [x[i],x[j]]=[x[j],x[i]]; } return x; }
+
+function start(qs,setKey){
+  if(!qs.length) return;
+  const items = (opts.shuffleQ?shuffled(qs):qs.slice()).map(q=>{
+    const order = opts.shuffleO ? shuffled([0,1,2,3]) : [0,1,2,3];
+    return {q, order, picked:null};
+  });
+  run = {items, i:0, setKey};
+  show("quiz"); paint();
+}
+
+function paint(){
+  const it = run.items[run.i], q = it.q;
+  $("counter").textContent = (run.i+1)+" / "+run.items.length;
+  $("fill").style.width = ((run.i)/run.items.length*100)+"%";
+  const done = run.items.filter(x=>x.picked!==null);
+  const right = done.filter(x=>x.picked===x.q.a).length;
+  $("runscore").textContent = opts.mode==="practice" && done.length ? right+" right" : "";
+  $("qtag").textContent = q.u;
+  $("qtext").textContent = q.q;
+
+  const box = $("opts"); box.innerHTML="";
+  const revealed = opts.mode==="practice" && it.picked!==null;
+  it.order.forEach((orig,pos)=>{
+    const b=document.createElement("button");
+    b.className="opt";
+    b.innerHTML='<span class="k"></span><span class="x"></span>';
+    b.querySelector(".k").textContent="abcd"[pos]+".";
+    b.querySelector(".x").textContent=q.o[orig];
+    if(it.picked===orig) b.classList.add(revealed ? (orig===q.a?"right":"wrong") : "sel");
+    if(revealed && orig===q.a) b.classList.add("right");
+    if(revealed) b.disabled=true;
+    b.onclick=()=>pick(orig);
+    box.appendChild(b);
+  });
+
+  const v=$("verdict"); v.innerHTML="";
+  if(revealed){
+    const ok = it.picked===q.a;
+    const d=document.createElement("div");
+    d.className="verdict "+(ok?"ok":"no");
+    const correctPos = "abcd"[it.order.indexOf(q.a)];
+    d.innerHTML = "<b>"+(ok?"Correct.":"Not this one — the answer is ("+correctPos+") "+esc(q.o[q.a])+".")+"</b> "+esc(q.e||"");
+    v.appendChild(d);
+  }
+  $("flagBtn").setAttribute("aria-pressed", String(flags.includes(keyOf(q))));
+  $("flagBtn").textContent = flags.includes(keyOf(q)) ? "★ Flagged" : "☆ Flag";
+  $("prevBtn").disabled = run.i===0;
+  $("nextBtn").textContent = run.i===run.items.length-1 ? "Finish" : "Next →";
+}
+function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+
+function pick(orig){
+  const it=run.items[run.i];
+  if(opts.mode==="practice" && it.picked!==null) return;
+  it.picked=orig;
+  const k=keyOf(it.q);
+  if(orig!==it.q.a){ if(!missed.includes(k)){ missed.push(k); LS.set("missed",missed);} }
+  else { const j=missed.indexOf(k); if(j>-1){ missed.splice(j,1); LS.set("missed",missed);} }
+  paint();
+}
+
+$("nextBtn").onclick=()=>{
+  if(run.i===run.items.length-1) finish();
+  else { run.i++; paint(); }
+};
+$("prevBtn").onclick=()=>{ if(run.i>0){ run.i--; paint(); } };
+$("quitBtn").onclick=()=>finish();
+$("flagBtn").onclick=()=>{
+  const k=keyOf(run.items[run.i].q), j=flags.indexOf(k);
+  if(j>-1) flags.splice(j,1); else flags.push(k);
+  LS.set("flags",flags); paint();
+};
+
+document.addEventListener("keydown",e=>{
+  if($("quiz").classList.contains("hidden")) return;
+  if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) return;
+  const it=run.items[run.i];
+  const m=e.key.toLowerCase();
+  const pos = "1234".indexOf(m)>-1 ? "1234".indexOf(m) : "abcd".indexOf(m);
+  if(pos>-1){ e.preventDefault(); pick(it.order[pos]); return; }
+  if(e.key==="Enter"||e.key==="ArrowRight"){ e.preventDefault(); $("nextBtn").click(); }
+  if(e.key==="ArrowLeft"){ e.preventDefault(); $("prevBtn").click(); }
+  if(m==="f"){ e.preventDefault(); $("flagBtn").click(); }
+});
+
+/* ============================================================
+   RESULT
+   ============================================================ */
+function finish(){
+  const answered = run.items.filter(x=>x.picked!==null);
+  const right = answered.filter(x=>x.picked===x.q.a).length;
+  const pct = answered.length ? Math.round(right/answered.length*100) : 0;
+  $("scoreVal").textContent = pct+"%";
+  $("scoreText").textContent = right+" of "+answered.length+" correct"+
+    (answered.length<run.items.length ? " ("+(run.items.length-answered.length)+" left unanswered)" : "");
+
+  if(run.setKey && answered.length===run.items.length){
+    if(best[run.setKey]==null || pct>best[run.setKey]){ best[run.setKey]=pct; LS.set("best",best); }
+  }
+
+  const bySet={};
+  answered.forEach(x=>{ const s=x.q.u; bySet[s]=bySet[s]||[0,0]; bySet[s][1]++; if(x.picked===x.q.a) bySet[s][0]++; });
+  $("breakdown").textContent = Object.keys(bySet).map(s=>s+": "+bySet[s][0]+"/"+bySet[s][1]).join("   ·   ");
+
+  const wrong = answered.filter(x=>x.picked!==x.q.a);
+  $("retryWrong").classList.toggle("hidden", !wrong.length);
+  $("retryWrong").onclick=()=>start(wrong.map(x=>x.q),null);
+
+  const rv=$("review"); rv.innerHTML="";
+  $("reviewHead").textContent = wrong.length ? "What to look at again" : "Everything you answered";
+  (wrong.length?wrong:answered).forEach(x=>{
+    const d=document.createElement("div"); d.className="reviewq";
+    const ok = x.picked===x.q.a;
+    d.innerHTML='<div class="qt"></div><div class="small"></div><div class="small muted" style="margin-top:4px"></div>';
+    d.querySelector(".qt").textContent=x.q.q;
+    d.children[1].innerHTML='<span class="pill '+(ok?"g":"b")+'">'+(ok?"You were right":"You chose")+'</span>'+
+      (ok?"":esc(x.q.o[x.picked])+' <span class="pill g">Answer</span> '+esc(x.q.o[x.q.a]));
+    d.children[2].textContent=x.q.e||"";
+    rv.appendChild(d);
+  });
+  show("result");
+}
+$("homeBtn").onclick=()=>{ renderHome(); show("home"); };
+
+/* ============================================================
+   BROWSE
+   ============================================================ */
+$("browseBtn").onclick=()=>{ renderBrowse(""); show("browse"); };
+$("browseBack").onclick=()=>{ renderHome(); show("home"); };
+$("search").oninput=e=>renderBrowse(e.target.value);
+
+function renderBrowse(term){
+  const t=term.trim().toLowerCase();
+  const qs=allQ().filter(q=> !t || q.q.toLowerCase().includes(t) || q.o.some(o=>o.toLowerCase().includes(t)));
+  $("searchCount").textContent = qs.length+" question"+(qs.length===1?"":"s");
+  const list=$("browseList"); list.innerHTML="";
+  qs.forEach((q,i)=>{
+    const d=document.createElement("div"); d.className="browseq";
+    const ol=q.o.map((o,j)=>'<li class="'+(j===q.a?"ans":"")+'">'+esc(o)+'</li>').join("");
+    d.innerHTML='<div class="small muted">'+esc(q.u)+'</div><div class="qt">'+esc(q.q)+
+      '</div><ol type="a">'+ol+'</ol>'+(q.e?'<div class="small muted" style="margin-top:8px">'+esc(q.e)+'</div>':'');
+    list.appendChild(d);
+  });
+}
+
+/* ============================================================
+   ADD A SET  (paste questions in the PDF layout + an answer key)
+   ============================================================ */
+$("addBtn").onclick=()=>show("add");
+$("addBack").onclick=()=>{ renderHome(); show("home"); };
+
+function parseQuestions(text){
+  const lines=text.split(/\r?\n/).map(l=>l.trim()).filter(l=>l.length);
+  const out=[]; let cur=null;
+  lines.forEach(l=>{
+    const qm = l.match(/^(\d+)[.)]\s*(.+)$/);
+    const om = l.match(/^([a-dA-D])[.)]\s*(.+)$/);
+    if(om && cur){ cur.o.push(om[2]); return; }
+    if(qm){ if(cur) out.push(cur); cur={n:+qm[1], q:qm[2], o:[]}; return; }
+    if(cur){ if(cur.o.length) cur.o[cur.o.length-1]+=" "+l; else cur.q+=" "+l; }
+  });
+  if(cur) out.push(cur);
+  return out;
+}
+function parseKey(text){
+  const map={};
+  (text.match(/\d+\s*[-–.: ]?\s*[a-dA-D]/g)||[]).forEach(p=>{
+    const n=parseInt(p,10), c=p.trim().slice(-1).toLowerCase();
+    map[n]="abcd".indexOf(c);
+  });
+  return map;
+}
+
+// Reads a PDF's text in-browser via pdf.js, reconstructing line breaks from
+// each text item's vertical position so the "1. / a. b. c. d." layout
+// survives (a flat concatenation of items loses the line breaks parseQuestions() needs).
+async function extractPdfText(file){
+  if(typeof pdfjsLib === "undefined"){ throw new Error("PDF reader did not load"); }
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data:buf}).promise;
+  let text="";
+  for(let p=1;p<=pdf.numPages;p++){
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    let lastY=null, line="";
+    for(const item of content.items){
+      const y=item.transform[5];
+      if(lastY!==null && Math.abs(y-lastY)>2){ text+=line+"\n"; line=""; }
+      line+=item.str; lastY=y;
+    }
+    text+=line+"\n\n";
+  }
+  return text;
+}
+
+$("pdfInput").onchange=async (e)=>{
+  const file=e.target.files && e.target.files[0];
+  if(!file) return;
+  const status=$("pdfStatus"), msg=$("parseMsg");
+  status.textContent="Reading the PDF…";
+  try{
+    const text=await extractPdfText(file);
+    $("qInput").value=text.trim();
+    status.textContent="This reads the PDF straight in your browser — nothing is uploaded anywhere. Most papers don't print an answer key next to the questions, so you'll usually still fill in the key below (or try \"Guess key from text\" if yours does).";
+    msg.style.color="var(--good)";
+    msg.textContent="Extracted text from the PDF into the box below — check it over, then fill in the answer key.";
+  }catch(err){
+    status.textContent="This reads the PDF straight in your browser — nothing is uploaded anywhere. Most papers don't print an answer key next to the questions, so you'll usually still fill in the key below (or try \"Guess key from text\" if yours does).";
+    msg.style.color="var(--bad)";
+    msg.textContent="Could not read that PDF ("+(err&&err.message?err.message:"unknown error")+"). You can also paste the questions directly.";
+  }
+  e.target.value="";
+};
+
+$("guessKeyBtn").onclick=()=>{
+  const msg=$("parseMsg");
+  const found=parseKey($("qInput").value);
+  const n=Object.keys(found).length;
+  if(!n){ msg.style.color="var(--bad)"; msg.textContent="No 'number + letter' answer key pattern was found in that text."; return; }
+  $("keyInput").value=Object.entries(found).map(([k,v])=>k+"abcd"[v]).join(" ");
+  msg.style.color="var(--good)";
+  msg.textContent="Pulled a possible key from the text — double check it against the paper before adding.";
+};
+
+$("parseBtn").onclick=()=>{
+  const name=$("setName").value.trim();
+  const qs=parseQuestions($("qInput").value);
+  const key=parseKey($("keyInput").value);
+  const msg=$("parseMsg");
+  if(!name){ msg.style.color="var(--bad)"; msg.textContent="Give the set a name first."; return; }
+  if(!qs.length){ msg.style.color="var(--bad)"; msg.textContent="No questions found. Each question needs a number, then choices starting with a. b. c. d."; return; }
+  const bad=qs.filter(x=>x.o.length!==4);
+  const noKey=qs.filter(x=>key[x.n]==null);
+  if(noKey.length){ msg.style.color="var(--bad)";
+    msg.textContent="Missing answers for question "+noKey.slice(0,8).map(x=>x.n).join(", ")+(noKey.length>8?"…":"")+". Add them to the answer key."; return; }
+  const added=qs.filter(x=>x.o.length===4).map(x=>({u:name,q:x.q,o:x.o,a:key[x.n],e:""}));
+  custom = custom.filter(c=>c.u!==name).concat(added);
+  LS.set("custom",custom);
+  msg.style.color="var(--good)";
+  msg.textContent="Added "+added.length+" questions to “"+name+"”."+(bad.length?" Skipped "+bad.length+" that did not have four choices.":"");
+  $("parsePreview").innerHTML="";
+  renderHome();
+};
+
+$("exportBtn").onclick=()=>{
+  const msg=$("parseMsg");
+  if(!custom.length){ msg.style.color="var(--bad)"; msg.textContent="You have not added any sets yet."; return; }
+  const ta=document.createElement("textarea");
+  ta.value=JSON.stringify(custom,null,1);
+  ta.style.marginTop="12px";
+  $("parsePreview").innerHTML="<p class='small muted' style='margin-top:14px'>Copy this if you want to keep a backup or paste the set into the file itself.</p>";
+  $("parsePreview").appendChild(ta);
+  ta.select();
+  msg.textContent="";
+};
+
+/* ============================================================
+   RESET + THEME
+   ============================================================ */
+$("resetBtn").onclick=()=>{
+  if(!confirm("Clear scores, flags and mistakes? Question sets you added stay.")) return;
+  flags=[]; missed=[]; best={};
+  LS.set("flags",flags); LS.set("missed",missed); LS.set("best",best);
+  renderHome();
+};
+
+let theme = LS.get("theme",null);
+if(theme) document.documentElement.setAttribute("data-theme",theme);
+function themeLabel(){
+  const dark = document.documentElement.getAttribute("data-theme")==="dark" ||
+    (!document.documentElement.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+}
+$("themeBtn").onclick=()=>{
+  const dark = document.documentElement.getAttribute("data-theme")==="dark" ||
+    (!document.documentElement.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  theme = dark ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme",theme);
+  LS.set("theme",theme); themeLabel();
+};
+themeLabel();
+renderHome();
+</script>
+</body>
+</html>
